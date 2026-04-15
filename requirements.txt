@@ -1,7 +1,6 @@
 streamlit
-tensorflow
-keras
+torch
+torchvision
 numpy
-opencv-python
+opencv-python-headless
 pillow
-matplotlib
