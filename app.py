@@ -18,7 +18,9 @@ def load_models():
     # Stroke Classification
     model_stroke = StrokeClassifier(num_classes=2).to(device)
     if os.path.exists("stroke_classifier_weights.pth"):
-        model_stroke.load_state_dict(torch.load("stroke_classifier_weights.pth", map_location=device))
+        model_stroke.load_state_dict(
+            torch.load("stroke_classifier_weights.pth", map_location=device, weights_only=False)
+        )
     else:
         st.error("stroke_classifier_weights.pth NOT FOUND")
     model_stroke.eval()
@@ -26,7 +28,9 @@ def load_models():
     # Stroke Type
     model_type = StrokeTypeClassifier(num_classes=2).to(device)
     if os.path.exists("stroke_type_weights.pth"):
-        model_type.load_state_dict(torch.load("stroke_type_weights.pth", map_location=device))
+        model_type.load_state_dict(
+            torch.load("stroke_type_weights.pth", map_location=device, weights_only=False)
+        )
     else:
         st.error("stroke_type_weights.pth NOT FOUND")
     model_type.eval()
@@ -34,7 +38,9 @@ def load_models():
     # UNet
     model_unet = UNet(n_channels=3, n_classes=1).to(device)
     if os.path.exists("unet_weights.pth"):
-        model_unet.load_state_dict(torch.load("unet_weights.pth", map_location=device))
+        model_unet.load_state_dict(
+            torch.load("unet_weights.pth", map_location=device, weights_only=False)
+        )
     else:
         st.error("unet_weights.pth NOT FOUND")
     model_unet.eval()
